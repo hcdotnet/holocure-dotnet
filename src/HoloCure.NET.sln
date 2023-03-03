@@ -10,11 +10,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{FD3A028D-DDAE-4F94-9EA9-DAB0DB804579}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		versions.targets = versions.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.Desktop", "HCDN.Desktop\HCDN.Desktop.csproj", "{6C0AD139-2661-4510-BC0E-98C41A67534A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.API", "HCDN.API\HCDN.API.csproj", "{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.CoreAPI", "HCDN.CoreAPI\HCDN.CoreAPI.csproj", "{918BF70F-E53E-4107-AF7E-7E1A3C36C609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.Mod.HoloCure", "HCDN.Mod.HoloCure\HCDN.Mod.HoloCure.csproj", "{20C7E770-6846-4EAE-B4A9-2C15DAB89BA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,5 +46,13 @@ Global
 		{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{918BF70F-E53E-4107-AF7E-7E1A3C36C609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{918BF70F-E53E-4107-AF7E-7E1A3C36C609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{918BF70F-E53E-4107-AF7E-7E1A3C36C609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{918BF70F-E53E-4107-AF7E-7E1A3C36C609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20C7E770-6846-4EAE-B4A9-2C15DAB89BA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20C7E770-6846-4EAE-B4A9-2C15DAB89BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20C7E770-6846-4EAE-B4A9-2C15DAB89BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20C7E770-6846-4EAE-B4A9-2C15DAB89BA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

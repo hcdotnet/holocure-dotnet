@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using HCDN.API;
+using Microsoft.Xna.Framework;
 
 namespace HCDN;
 
@@ -6,10 +7,21 @@ namespace HCDN;
 ///     The main <see cref="Game"/> implementation, which manages core data for
 ///     this game instance.
 /// </summary>
-public abstract class HoloCureGame : Game {
+public abstract class HoloCureGame : Game,
+                                     IGame {
+    /// <summary>
+    ///     The <see cref="IModLoader"/> instance for this game.
+    /// </summary>
+    public IModLoader ModLoader { get; }
+
     /// <summary>
     ///     Initializes a new instance of <see cref="HoloCureGame"/> with all
     ///     required external dependencies.
     /// </summary>
-    protected HoloCureGame() { }
+    /// <param name="modLoader">
+    ///     The <see cref="IModLoader"/> to use for loading mods.
+    /// </param>
+    protected HoloCureGame(IModLoader modLoader) {
+        ModLoader = modLoader;
+    }
 }

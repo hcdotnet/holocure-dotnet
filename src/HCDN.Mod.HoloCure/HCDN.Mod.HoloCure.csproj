@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../versions.targets"/>
+
+    <PropertyGroup>
+        <RootNamespace>HCDN.Mod.HoloCure</RootNamespace>
+        <AssemblyName>HCDN.Mod.HoloCure</AssemblyName>
+        <PackageId>HCDN.Mod.HoloCure</PackageId>
+
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Version>$(HCDNModHoloCureVersion)</Version>
+        <FileVersion>$(HCDNModHoloCureVersion)</FileVersion>
+        <AssemblyVersion>$(HCDNModHoloCureVersion)</AssemblyVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AssemblyTitle>HoloCure - HoloCure.NET</AssemblyTitle>
+        <Description>
+            Reimplemention of the original HoloCure game in HoloCure.NET, as a loadable mod.
+        </Description>
+        <Authors>Tomat</Authors>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HCDN.CoreAPI\HCDN.CoreAPI.csproj"/>
+        <ProjectReference Include="..\HCDN\HCDN.csproj"/>
+    </ItemGroup>
+
+</Project>

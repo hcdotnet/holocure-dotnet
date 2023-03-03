@@ -1,0 +1,11 @@
+<Project>
+    
+    <PropertyGroup>
+        <HCDNVersion>0.1.0</HCDNVersion>
+        <HCDNAPIVersion>0.1.0</HCDNAPIVersion>
+        <HCDNCoreAPIVersion>0.1.0</HCDNCoreAPIVersion>
+        <HCDNDesktopVersion>0.1.0</HCDNDesktopVersion>
+        <HCDNModHoloCureVersion>0.1.0</HCDNModHoloCureVersion>
+    </PropertyGroup>
+    
+</Project>

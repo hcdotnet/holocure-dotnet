@@ -1,28 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+using HCDN.Desktop.Modding;
 using log4net;
-using log4net.Appender;
-using log4net.Config;
-using log4net.Layout;
 
 namespace HCDN.Desktop;
 
 internal static class Program {
-    private const string logger_pattern = "[%d{HH:mm:ss.fff}] [%t/%level] [%logger]: %m%n";
-    private const string log_file_name = "desktop.log";
-
-    // TODO: Decide if UTF-8 is fine for other languages.
-    private static readonly Encoding logger_encoding = new UTF8Encoding(false);
-
     [STAThread]
     internal static void Main(string[] args) {
-        ConfigureLogging();
+        // Step 1: Initialize logging, this is done before anything else. Also
+        // get some basic logging done before anything else just because.
+        Logging.Initialize();
         var logger = LogManager.GetLogger(typeof(Program));
-        logger.Debug("Configured logging!");
+        LogStartupInfo(logger, args);
+        
+        // Step 2: Load core-mods. This is the first thing we do after logging.
+        // It is by far the most important and complex step in the loading
+        // process.
+        CoreModLoader.LoadCoreMods();
+        
+        // Step 3: Bootstrap FNA. This is the first important thing we do after
+        // loading core-mods.
+        Bootstrap.BootstrapFna();
+        
+        // Step 4: Check for updates to the desktop client. This comes after
+        // bootstrapping FNA since we use SDL message boxes.
+        Updater.CheckForAndPromptUpdate();
+        
+        // Step 5: After loading core-mods and bootstrapping FNA, load the game.
+        RunGame(logger);
+    }
 
+    private static void RunGame(ILog logger) {
+        logger.Info("Starting game!");
+        logger.Debug($"Initializing {nameof(DesktopGame)} instance...");
+        using var game = new DesktopGame(new DesktopModLoader());
+
+        logger.Debug($"Running {nameof(DesktopGame)} instance...");
+        game.Run();
+    }
+
+    private static void LogStartupInfo(ILog logger, string[] args) {
         if (args.Length > 0) {
             logger.Debug("Started process with launch arguments:");
             foreach (var arg in args)
@@ -33,92 +50,5 @@ internal static class Program {
         }
 
         logger.Debug("Running in CWD: " + Environment.CurrentDirectory);
-
-        Bootstrap.BootstrapFna();
-
-        logger.Info("Starting game...");
-        RunGame(logger);
-    }
-
-    private static void RunGame(ILog logger) {
-        logger.Debug($"Initialization {nameof(DesktopGame)} instance...");
-        using var game = new DesktopGame();
-
-        logger.Debug($"Running {nameof(DesktopGame)} instance...");
-        game.Run();
-    }
-
-    private static void ConfigureLogging() {
-        var layout = new PatternLayout {
-            ConversionPattern = logger_pattern,
-        };
-        layout.ActivateOptions();
-
-        var appenders = MakeAppenders(layout).ToArray();
-        BasicConfigurator.Configure(appenders);
-    }
-
-    private static IEnumerable<IAppender> MakeAppenders(ILayout layout) {
-        yield return new ConsoleAppender {
-            Name = nameof(ConsoleAppender),
-            Layout = layout,
-        };
-
-        yield return new DebugAppender {
-            Name = nameof(DebugAppender),
-            Layout = layout,
-        };
-
-        var archivable = new FileAppender {
-            Name = "Archivable" + nameof(FileAppender),
-            File = PrepareArchivableLogFile(),
-            AppendToFile = false,
-            Encoding = logger_encoding,
-            Layout = layout,
-        };
-        archivable.ActivateOptions();
-        yield return archivable;
-
-        var temporary = new FileAppender {
-            Name = "Temporary" + nameof(FileAppender),
-            File = PrepareTemporaryLogFile(),
-            AppendToFile = false,
-            Encoding = logger_encoding,
-            Layout = layout,
-        };
-        temporary.ActivateOptions();
-        yield return temporary;
-    }
-
-    private static (string cwd, string logDir) EnsureLogDirectories() {
-        var cwd = Path.GetFullPath(Environment.CurrentDirectory);
-        var logDir = Path.Combine(cwd, "logs");
-
-        Directory.CreateDirectory(logDir);
-
-        return (cwd, logDir);
-    }
-
-    private static string PrepareArchivableLogFile() {
-        var (_, logDir) = EnsureLogDirectories();
-        var name = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + "_" + log_file_name;
-        var logFile = Path.Combine(logDir, name);
-
-        if (File.Exists(logFile)) {
-            // TODO: Panic?
-        }
-
-        return logFile;
-    }
-
-    private static string PrepareTemporaryLogFile() {
-        var (cwd, _) = EnsureLogDirectories();
-        var logFile = Path.Combine(cwd, log_file_name);
-
-        if (File.Exists(logFile)) {
-            File.Delete(logFile);
-        }
-
-        return logFile;
     }
 }

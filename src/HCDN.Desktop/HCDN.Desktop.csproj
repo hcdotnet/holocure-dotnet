@@ -1,14 +1,48 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <Import Project="../versions.targets" />
+
     <PropertyGroup>
+        <RootNamespace>HCDN.Desktop</RootNamespace>
+        <AssemblyName>HCDN.Desktop</AssemblyName>
+        <PackageId>HCDN.Desktop</PackageId>
+
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <Version>$(HCDNDesktopVersion)</Version>
+        <FileVersion>$(HCDNDesktopVersion)</FileVersion>
+        <AssemblyVersion>$(HCDNDesktopVersion)</AssemblyVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AssemblyTitle>HCDN.Desktop - HoloCure.NET.Desktop</AssemblyTitle>
+        <Description>Desktop implementation of HoloCure.NET.</Description>
+        <Authors>Tomat</Authors>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
     <ItemGroup>
-      <ProjectReference Include="..\HCDN\HCDN.csproj" />
+        <ProjectReference Include="..\HCDN.CoreAPI\HCDN.CoreAPI.csproj" />
+        <ProjectReference Include="..\HCDN\HCDN.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NuGet.Protocol" Version="6.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <fnalibs Include="..\..\native\fnalibs\**" />
+        <fnalibs Remove="..\..\native\fnalibs\README.txt" />
+        <Content Include="@(fnalibs)">
+            <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>
