@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="log4net" Version="2.0.15" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -16,7 +17,7 @@
 
     <ItemGroup>
       <fnalibs Include="..\..\native\fnalibs\**" />
-      <fnalibs Remove="..\..\native\fnalibs\README.txt"/>
+      <fnalibs Remove="..\..\native\fnalibs\README.txt" />
       <Content Include="@(fnalibs)">
         <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
