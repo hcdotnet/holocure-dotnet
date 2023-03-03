@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using HCDN.Desktop.Modding;
 using log4net;
 
@@ -7,6 +8,10 @@ namespace HCDN.Desktop;
 internal static class Program {
     [STAThread]
     internal static void Main(string[] args) {
+        // Step 0: Run the post-download update process first.
+        if (Updater.RunFromStaging(args.ToList()))
+            return;
+        
         // Step 1: Initialize logging, this is done before anything else. Also
         // get some basic logging done before anything else just because.
         Logging.Initialize();
@@ -59,5 +64,6 @@ internal static class Program {
         }
 
         logger.Debug("Running in CWD: " + Environment.CurrentDirectory);
+        logger.Debug("AppDomain directory: " + AppDomain.CurrentDomain.BaseDirectory);
     }
 }

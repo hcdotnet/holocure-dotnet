@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,7 +38,15 @@ internal readonly record struct InfoAsmData(
 
 internal static class Updater {
     private const string staging_dir = "staging";
-    private const string temp_path = "temp.nupkg";
+
+    private static readonly string[] dirs_to_delete = {
+        "lib64",
+        "osx",
+        "vulkan",
+        "x64",
+        "x86",
+        "runtimes",
+    };
 
     public static bool CheckForAndPromptUpdate() {
         var logger = LogManager.GetLogger(typeof(Updater));
@@ -50,7 +61,49 @@ internal static class Updater {
         }
     }
 
+    public static bool RunFromStaging(List<string> args) {
+        var index = args.IndexOf("--staging");
+        if (index == -1)
+            return false;
+
+        if (args.Count <= index + 1)
+            throw new Exception("Expected path to install directory after --staging.");
+
+        var installDir = args[index + 1];
+        var stagingDir = AppDomain.CurrentDomain.BaseDirectory;
+        if (!stagingDir.EndsWith(Path.DirectorySeparatorChar))
+            stagingDir += Path.DirectorySeparatorChar;
+
+        // Delete all files in the install directory.
+        foreach (var file in Directory.EnumerateFiles(installDir))
+            File.Delete(file);
+
+        // Delete all directories in the install directory that should be
+        // deleted.
+        foreach (var dir in dirs_to_delete.Select(x => Path.Combine(installDir, x)))
+            if (Directory.Exists(dir)) 
+                Directory.Delete(dir, true);
+
+        // Copy staging directory contents to install directory, preserving
+        // directory structure.
+        foreach (var file in Directory.EnumerateFiles(stagingDir, "*", SearchOption.AllDirectories)) {
+            var relativePath = file[stagingDir.Length..];
+            var destPath = Path.Combine(installDir, relativePath);
+            var destDir = Path.GetDirectoryName(destPath);
+            if (!Directory.Exists(destDir))
+                Directory.CreateDirectory(destDir!);
+
+            File.Copy(file, destPath);
+        }
+
+        return true;
+    }
+
     private static async Task<bool> CheckNuGet(InfoAsmData info, ILog logger) {
+        var stagingDir = Path.Combine(Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory), staging_dir);
+        if (Directory.Exists(stagingDir))
+            Directory.Delete(stagingDir, true);
+
         var (sourceRepo, package) = await NuGetUtil.GetNewerPackageVersion(
             info.PackageId,
             info.PackageVersion,
@@ -60,9 +113,6 @@ internal static class Updater {
         if (package is null || sourceRepo is null)
             return false;
 
-        var stagingDir = Path.Combine(Path.GetFullPath(Environment.CurrentDirectory), staging_dir);
-        if (Directory.Exists(stagingDir))
-            Directory.Delete(stagingDir, true);
         Directory.CreateDirectory(staging_dir);
 
         // Show SDL message box showing an update is available and two options:
@@ -120,6 +170,22 @@ internal static class Updater {
                     ),
                     new CancellationToken()
                 );
+
+                var stagingDirInfo = new DirectoryInfo(stagingDir);
+                var folder = stagingDirInfo.GetDirectories().Single();
+                var libFolder = folder.GetDirectories("lib").Single();
+                var tgFolder = libFolder.GetDirectories().Single();
+                if (tgFolder.GetFiles("HCDN.Desktop.dll").Length != 1)
+                    throw new Exception("Expected exactly one HCDN.Desktop.dll in staging directory.");
+
+                var path = AppDomain.CurrentDomain.BaseDirectory;
+                if (path.EndsWith(Path.DirectorySeparatorChar))
+                    path = path[..^1];
+                Process.Start(new ProcessStartInfo {
+                    FileName = "dotnet",
+                    Arguments = $"\"{tgFolder.GetFiles("HCDN.Desktop.dll").Single().FullName}\" --staging \"{path}\"",
+                    UseShellExecute = false,
+                });
                 return true;
         }
 

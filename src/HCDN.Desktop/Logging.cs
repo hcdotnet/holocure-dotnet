@@ -63,7 +63,7 @@ internal static class Logging {
     }
 
     private static (string cwd, string logDir) EnsureLogDirectories() {
-        var cwd = Path.GetFullPath(Environment.CurrentDirectory);
+        var cwd = Path.GetFullPath(AppDomain.CurrentDomain.BaseDirectory);
         var logDir = Path.Combine(cwd, "logs");
 
         Directory.CreateDirectory(logDir);
