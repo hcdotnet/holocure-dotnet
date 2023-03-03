@@ -5,7 +5,7 @@ using log4net;
 
 namespace HCDN.Desktop;
 
-internal static class Bootstrap {
+internal static class FnaBootstrapper {
     [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
     [return: MarshalAs(UnmanagedType.Bool)]
     private static extern bool SetDefaultDllDirectories(int directoryFlags);
@@ -19,8 +19,8 @@ internal static class Bootstrap {
 
     private const int load_library_search_default_dirs = 0x00001000;
 
-    public static void BootstrapFna() {
-        var logger = LogManager.GetLogger(typeof(Bootstrap));
+    public static void Bootstrap() {
+        var logger = LogManager.GetLogger(typeof(FnaBootstrapper));
         var platform = Environment.OSVersion.Platform;
         var is64Bit = Environment.Is64BitProcess;
         var fnalibsDir = Path.Combine(

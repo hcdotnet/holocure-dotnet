@@ -13,20 +13,27 @@ internal static class Program {
         var logger = LogManager.GetLogger(typeof(Program));
         LogStartupInfo(logger, args);
         
-        // Step 2: Load core-mods. This is the first thing we do after logging.
+        // Step 2: Bootstrap mod loading. Core-mod support depends on this step,
+        // as well as regular runtime mod loading, so this comes first. This
+        // step handles some important things such as discovering, unpacking,
+        // and deleting .nupkg files (present in first-launch releases and from
+        // downloading packages in-game).
+        ModBootstrapper.Bootstrap();
+        
+        // Step 3: Load core-mods. This is the first thing we do after logging.
         // It is by far the most important and complex step in the loading
         // process.
         CoreModLoader.LoadCoreMods();
         
-        // Step 3: Bootstrap FNA. This is the first important thing we do after
+        // Step 4: Bootstrap FNA. This is the first important thing we do after
         // loading core-mods.
-        Bootstrap.BootstrapFna();
+        FnaBootstrapper.Bootstrap();
         
-        // Step 4: Check for updates to the desktop client. This comes after
+        // Step 5: Check for updates to the desktop client. This comes after
         // bootstrapping FNA since we use SDL message boxes.
         Updater.CheckForAndPromptUpdate();
         
-        // Step 5: After loading core-mods and bootstrapping FNA, load the game.
+        // Step 6: After loading core-mods and bootstrapping FNA, load the game.
         RunGame(logger);
     }
 
