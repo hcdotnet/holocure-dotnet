@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using log4net;
 
-namespace HoloCure.NET.Desktop;
+namespace HCDN.Desktop;
 
 internal static class Bootstrap {
     [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]

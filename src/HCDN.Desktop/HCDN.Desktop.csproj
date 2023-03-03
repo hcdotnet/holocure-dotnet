@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HoloCure.NET\HoloCure.NET.csproj" />
+      <ProjectReference Include="..\HCDN\HCDN.csproj" />
     </ItemGroup>
 
 </Project>

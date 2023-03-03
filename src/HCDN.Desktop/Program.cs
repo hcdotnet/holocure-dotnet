@@ -8,7 +8,7 @@ using log4net.Appender;
 using log4net.Config;
 using log4net.Layout;
 
-namespace HoloCure.NET.Desktop;
+namespace HCDN.Desktop;
 
 internal static class Program {
     private const string logger_pattern = "[%d{HH:mm:ss.fff}] [%t/%level] [%logger]: %m%n";

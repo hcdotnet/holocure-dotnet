@@ -1,4 +1,4 @@
-﻿namespace HoloCure.NET.Desktop;
+﻿namespace HCDN.Desktop;
 
 /// <summary>
 ///     The desktop implementation of <see cref="HoloCureGame"/>.

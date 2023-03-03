@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.NET.Desktop", "HoloCure.NET.Desktop\HoloCure.NET.Desktop.csproj", "{E2025680-533F-4BEA-9428-7EFF0C94393E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoloCure.NET", "HoloCure.NET\HoloCure.NET.csproj", "{83307C59-49E6-4C50-892D-961B9241C749}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN", "HCDN\HCDN.csproj", "{83307C59-49E6-4C50-892D-961B9241C749}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNA.Core", "FNA\FNA.Core.csproj", "{623318CE-E76E-43C1-A997-FE359FFEA6B7}"
 EndProject
@@ -13,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{FD
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.Desktop", "HCDN.Desktop\HCDN.Desktop.csproj", "{6C0AD139-2661-4510-BC0E-98C41A67534A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.API", "HCDN.API\HCDN.API.csproj", "{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +25,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2025680-533F-4BEA-9428-7EFF0C94393E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2025680-533F-4BEA-9428-7EFF0C94393E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2025680-533F-4BEA-9428-7EFF0C94393E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2025680-533F-4BEA-9428-7EFF0C94393E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83307C59-49E6-4C50-892D-961B9241C749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83307C59-49E6-4C50-892D-961B9241C749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83307C59-49E6-4C50-892D-961B9241C749}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,5 +33,13 @@ Global
 		{623318CE-E76E-43C1-A997-FE359FFEA6B7}.Debug|Any CPU.Build.0 = Debug|x64
 		{623318CE-E76E-43C1-A997-FE359FFEA6B7}.Release|Any CPU.ActiveCfg = Release|x64
 		{623318CE-E76E-43C1-A997-FE359FFEA6B7}.Release|Any CPU.Build.0 = Release|x64
+		{6C0AD139-2661-4510-BC0E-98C41A67534A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C0AD139-2661-4510-BC0E-98C41A67534A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C0AD139-2661-4510-BC0E-98C41A67534A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C0AD139-2661-4510-BC0E-98C41A67534A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5DE8CE6-EEA1-44D6-B57C-7AF897AA22D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

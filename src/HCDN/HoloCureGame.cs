@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace HoloCure.NET;
+namespace HCDN;
 
 /// <summary>
 ///     The main <see cref="Game"/> implementation, which manages core data for

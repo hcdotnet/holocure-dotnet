@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FNA\FNA.Core.csproj" />
+      <ProjectReference Include="..\HCDN.API\HCDN.API.csproj" />
     </ItemGroup>
 
     <ItemGroup>
