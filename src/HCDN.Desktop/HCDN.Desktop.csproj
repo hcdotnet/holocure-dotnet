@@ -11,6 +11,8 @@
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        
+        <InformationalVersion>$(PackageId)|$(HCDNDesktopVersion)</InformationalVersion>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -33,7 +35,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="NuGet.Protocol" Version="6.5.0" />
+        <PackageReference Include="NuGet.Protocol" Version="6.5.0" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
