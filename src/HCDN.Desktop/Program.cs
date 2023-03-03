@@ -30,8 +30,10 @@ internal static class Program {
         FnaBootstrapper.Bootstrap();
         
         // Step 5: Check for updates to the desktop client. This comes after
-        // bootstrapping FNA since we use SDL message boxes.
-        Updater.CheckForAndPromptUpdate();
+        // bootstrapping FNA since we use SDL message boxes. Returns true if the
+        // user accepts an update, in which case we want to exit successfully.
+        if (Updater.CheckForAndPromptUpdate())
+            return;
         
         // Step 6: After loading core-mods and bootstrapping FNA, load the game.
         RunGame(logger);
