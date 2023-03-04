@@ -3,7 +3,7 @@
 > please don't sue me
 
 ---
-~~~~
+
 Free, open-source, modular, extensible HoloCure rewrite in C# with FNA. Designed
 to facilitate modding with performance in mind.
 
