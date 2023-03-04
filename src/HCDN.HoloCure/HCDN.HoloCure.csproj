@@ -1,11 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="../versions.targets"/>
+    <Import Project="../versions.targets" />
 
     <PropertyGroup>
-        <RootNamespace>HCDN.Mod.HoloCure</RootNamespace>
-        <AssemblyName>HCDN.Mod.HoloCure</AssemblyName>
-        <PackageId>HCDN.Mod.HoloCure</PackageId>
+        <PackageId>HCDN.HoloCure</PackageId>
 
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -13,9 +11,9 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Version>$(HCDNModHoloCureVersion)</Version>
-        <FileVersion>$(HCDNModHoloCureVersion)</FileVersion>
-        <AssemblyVersion>$(HCDNModHoloCureVersion)</AssemblyVersion>
+        <Version>$(HCDNHoloCureVersion)</Version>
+        <FileVersion>$(HCDNHoloCureVersion)</FileVersion>
+        <AssemblyVersion>$(HCDNHoloCureVersion)</AssemblyVersion>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -29,8 +27,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\HCDN.CoreAPI\HCDN.CoreAPI.csproj"/>
-        <ProjectReference Include="..\HCDN\HCDN.csproj"/>
+        <ProjectReference Include="..\HCDN.CoreAPI\HCDN.CoreAPI.csproj" />
+        <ProjectReference Include="..\HCDN\HCDN.csproj" />
     </ItemGroup>
 
 </Project>

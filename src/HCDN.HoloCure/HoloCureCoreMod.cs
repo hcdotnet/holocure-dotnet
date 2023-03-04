@@ -2,7 +2,7 @@
 using HCDN.CoreAPI;
 using Mono.Cecil;
 
-namespace HCDN.Mod.HoloCure; 
+namespace HCDN.HoloCure; 
 
 /// <summary>
 ///     An implementation of <see cref="ICoreMod"/>. These types are initialized

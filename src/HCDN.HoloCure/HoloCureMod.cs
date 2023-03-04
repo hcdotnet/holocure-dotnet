@@ -1,6 +1,6 @@
 ﻿using HCDN.API;
 
-namespace HCDN.Mod.HoloCure;
+namespace HCDN.HoloCure;
 
 /// <summary>
 ///     The main <see cref="IMod"/> implementation.

@@ -10,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{FD3A028D-DDAE-4F94-9EA9-DAB0DB804579}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		versions.targets = versions.targets
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
@@ -20,11 +19,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.API", "HCDN.API\HCDN.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.CoreAPI", "HCDN.CoreAPI\HCDN.CoreAPI.csproj", "{918BF70F-E53E-4107-AF7E-7E1A3C36C609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.Mod.HoloCure", "HCDN.Mod.HoloCure\HCDN.Mod.HoloCure.csproj", "{20C7E770-6846-4EAE-B4A9-2C15DAB89BA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.HoloCure", "HCDN.HoloCure\HCDN.HoloCure.csproj", "{20C7E770-6846-4EAE-B4A9-2C15DAB89BA5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{EAB72CB1-B130-44B8-B675-F073C0820240}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.Desktop.NuGet", "HCDN.Desktop.NuGet\HCDN.Desktop.NuGet.csproj", "{1D6AA573-C4E7-41FA-A5A0-753940ACFCFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "targets", "targets", "{373D74FA-61F8-40D3-A7B1-9069DB091649}"
+	ProjectSection(SolutionItems) = preProject
+		versions.targets = versions.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
