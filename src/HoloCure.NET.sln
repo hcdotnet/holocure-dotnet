@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{FD
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		versions.targets = versions.targets
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.Desktop", "HCDN.Desktop\HCDN.Desktop.csproj", "{6C0AD139-2661-4510-BC0E-98C41A67534A}"
