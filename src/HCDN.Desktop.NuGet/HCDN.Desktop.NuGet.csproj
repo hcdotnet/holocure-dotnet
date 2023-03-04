@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="../versions.targets"/>
+
+    <PropertyGroup>
+        <RootNamespace>HCDN.Desktop</RootNamespace>
+        <AssemblyName>HCDN.Desktop.NuGet</AssemblyName>
+        <PackageId>HCDN.Desktop</PackageId>
+
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Version>$(HCDNDesktopVersion)</Version>
+        <FileVersion>$(HCDNDesktopVersion)</FileVersion>
+        <AssemblyVersion>$(HCDNDesktopVersion)</AssemblyVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AssemblyTitle>HCDN.Desktop - HoloCure.NET.Desktop</AssemblyTitle>
+        <Description>Desktop implementation of HoloCure.NET.</Description>
+        <Authors>Tomat</Authors>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HCDN.Desktop\HCDN.Desktop.csproj" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <Target Name="AddBuildFilesBeforePack"
+            AfterTargets="Build"
+            BeforeTargets="Pack">
+        <ItemGroup>
+            <None Include="bin\$(Configuration)\$(TargetFramework)\**" PackagePath="lib\$(TargetFramework)\%(RecursiveDir)%(Filename)%(Extension)" Pack="true" Visible="false"/>
+            <None Remove="bin\$(Configuration)\$(TargetFramework)\HCDN.Desktop.NuGet.dll"/>
+            <None Remove="bin\$(Configuration)\$(TargetFramework)\HCDN.Desktop.NuGet.pdb"/>
+        </ItemGroup>
+    </Target>
+
+</Project>

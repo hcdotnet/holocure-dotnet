@@ -26,7 +26,6 @@
         <Description>Desktop implementation of HoloCure.NET.</Description>
         <Authors>Tomat</Authors>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
@@ -43,15 +42,14 @@
         <fnalibs Remove="..\..\native\fnalibs\README.txt"/>
         <Content Include="@(fnalibs)">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <PackagePath>lib\$(TargetFramework)\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
         </Content>
 
-        <libs Include="bin\$(Configuration)\$(TargetFramework)\*"/>
+        <!--<libs Include="bin\$(Configuration)\$(TargetFramework)\*"/>
         <libs Remove="bin\$(Configuration)\$(TargetFramework)\HCDN.Desktop.dll"/>
         <libs Remove="bin\$(Configuration)\$(TargetFramework)\HCDN.Desktop.runtimeconfig.json"/>
         <runtimes Include="bin\$(Configuration)\$(TargetFramework)\runtimes\**"/>
         <None Include="@(libs)" PackagePath="lib\$(TargetFramework)\%(RecursiveDir)%(Filename)%(Extension)" Pack="true" Visible="false"/>
-        <None Include="@(runtimes)" PackagePath="lib\$(TargetFramework)\runtimes\%(RecursiveDir)%(Filename)%(Extension)" Pack="true" Visible="false"/>
+        <None Include="@(runtimes)" PackagePath="lib\$(TargetFramework)\runtimes\%(RecursiveDir)%(Filename)%(Extension)" Pack="true" Visible="false"/>-->
     </ItemGroup>
 
 </Project>
