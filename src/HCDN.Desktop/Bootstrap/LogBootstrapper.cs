@@ -9,14 +9,14 @@ using log4net.Layout;
 
 namespace HCDN.Desktop.Bootstrap;
 
-internal static class Logging {
+internal static class LogBootstrapper {
     private const string logger_pattern = "[%d{HH:mm:ss.fff}] [%t/%level] [%logger]: %m%n";
     private const string log_file_name = "desktop.log";
 
     // TODO: Decide if UTF-8 is fine for other languages.
     private static readonly Encoding logger_encoding = new UTF8Encoding(false);
 
-    public static void Initialize() {
+    public static void Bootstrap() {
         ConfigureLogging();
     }
     

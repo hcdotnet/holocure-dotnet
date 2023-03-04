@@ -15,7 +15,7 @@ internal static class Program {
         
         // Step 1: Initialize logging, this is done before anything else. Also
         // get some basic logging done before anything else just because.
-        Logging.Initialize();
+        LogBootstrapper.Bootstrap();
         var logger = LogManager.GetLogger(typeof(Program));
         LogStartupInfo(logger, args);
         
