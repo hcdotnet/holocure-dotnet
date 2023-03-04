@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>HCDN.Benchmarks.Vector2AddBenchmark-20230304-143337</title>
+<title>HCDN.Benchmarks.Vector2AddBenchmark-20230304-151637</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,18 +17,22 @@ BenchmarkDotNet=v0.13.5, OS=Windows 10 (10.0.19045.2604/22H2/2022Update)
 AMD Ryzen 7 5700G with Radeon Graphics, 1 CPU, 16 logical and 8 physical cores
 .NET SDK=7.0.101
   [Host]     : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
-  Job-EVUISN : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
-  Job-WOQYGC : .NET 7.0.3 (7.0.323.6910), X64 RyuJIT AVX2
+  Job-AALAUH : .NET 6.0.14 (6.0.1423.7309), X64 RyuJIT AVX2
+  Job-ELKIGH : .NET 7.0.3 (7.0.323.6910), X64 RyuJIT AVX2
 </code></pre>
 <pre><code></code></pre>
 
 <table>
-<thead><tr><th> Method</th><th>Runtime</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th>
+<thead><tr><th>         Method</th><th>Runtime</th><th> Mean</th><th>Error</th><th>StdDev</th><th>Ratio</th>
 </tr>
-</thead><tbody><tr><td>FnaVector2Add</td><td>.NET 6.0</td><td>4,441.1 ns</td><td>40.80 ns</td><td>38.16 ns</td><td>1.00</td>
-</tr><tr><td>FnaVector2Add</td><td>.NET 7.0</td><td>4,436.5 ns</td><td>51.06 ns</td><td>47.76 ns</td><td>1.00</td>
-</tr><tr><td>SysVector2Add</td><td>.NET 6.0</td><td>512.0 ns</td><td>3.07 ns</td><td>2.40 ns</td><td>1.00</td>
-</tr><tr><td>SysVector2Add</td><td>.NET 7.0</td><td>515.4 ns</td><td>6.79 ns</td><td>6.35 ns</td><td>1.01</td>
+</thead><tbody><tr><td>FnaVector2Add</td><td>.NET 6.0</td><td>4,393.4 ns</td><td>36.51 ns</td><td>34.15 ns</td><td>1.00</td>
+</tr><tr><td>FnaVector2Add</td><td>.NET 7.0</td><td>4,469.6 ns</td><td>45.39 ns</td><td>40.24 ns</td><td>1.02</td>
+</tr><tr><td>SysVector2Add</td><td>.NET 6.0</td><td>508.9 ns</td><td>1.71 ns</td><td>1.52 ns</td><td>1.00</td>
+</tr><tr><td>SysVector2Add</td><td>.NET 7.0</td><td>515.1 ns</td><td>2.66 ns</td><td>2.08 ns</td><td>1.01</td>
+</tr><tr><td>FnaVector2AddNoInline</td><td>.NET 6.0</td><td>11,190.5 ns</td><td>72.45 ns</td><td>64.23 ns</td><td>1.00</td>
+</tr><tr><td>FnaVector2AddNoInline</td><td>.NET 7.0</td><td>11,369.5 ns</td><td>150.05 ns</td><td>140.36 ns</td><td>1.02</td>
+</tr><tr><td>SysVector2AddNoInline</td><td>.NET 6.0</td><td>1,580.0 ns</td><td>13.89 ns</td><td>12.31 ns</td><td>1.00</td>
+</tr><tr><td>SysVector2AddNoInline</td><td>.NET 7.0</td><td>1,375.4 ns</td><td>9.50 ns</td><td>7.93 ns</td><td>0.87</td>
 </tr></tbody></table>
 </body>
 </html>
