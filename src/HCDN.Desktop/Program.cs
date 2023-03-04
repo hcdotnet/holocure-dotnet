@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
-using HCDN.Desktop.Modding;
+using HCDN.Desktop.Bootstrap;
+using HCDN.Desktop.Bootstrap.Modding;
 using log4net;
 
 namespace HCDN.Desktop;

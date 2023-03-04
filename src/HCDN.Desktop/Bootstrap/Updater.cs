@@ -13,7 +13,7 @@ using NuGet.Packaging.Signing;
 using NuGet.Protocol.Core.Types;
 using static SDL2.SDL;
 
-namespace HCDN.Desktop;
+namespace HCDN.Desktop.Bootstrap;
 
 internal readonly record struct InfoAsmData(
     string PackageId,

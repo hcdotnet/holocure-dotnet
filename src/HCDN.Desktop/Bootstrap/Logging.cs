@@ -7,7 +7,7 @@ using log4net.Appender;
 using log4net.Config;
 using log4net.Layout;
 
-namespace HCDN.Desktop;
+namespace HCDN.Desktop.Bootstrap;
 
 internal static class Logging {
     private const string logger_pattern = "[%d{HH:mm:ss.fff}] [%t/%level] [%logger]: %m%n";

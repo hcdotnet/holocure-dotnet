@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using log4net;
 
-namespace HCDN.Desktop;
+namespace HCDN.Desktop.Bootstrap;
 
 internal static class FnaBootstrapper {
     [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
