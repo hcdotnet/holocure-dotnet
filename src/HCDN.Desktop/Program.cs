@@ -38,6 +38,8 @@ internal static class Program {
         // Step 5: Check for updates to the desktop client. This comes after
         // bootstrapping FNA since we use SDL message boxes. Returns true if the
         // user accepts an update, in which case we want to exit successfully.
+        // TODO: Move to an interface in the game assembly, make the game handle
+        // exiting itself and prompting the user.
         if (Updater.CheckForAndPromptUpdate())
             return;
         
