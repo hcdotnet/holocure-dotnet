@@ -5,7 +5,6 @@
     <PropertyGroup>
         <RootNamespace>HCDN.Desktop</RootNamespace>
         <AssemblyName>HCDN.Desktop</AssemblyName>
-        <PackageId>HCDN.Desktop</PackageId>
 
         <OutputType>Exe</OutputType>
         <TargetFramework>net6.0</TargetFramework>
@@ -19,13 +18,6 @@
         <Version>$(HCDNDesktopVersion)</Version>
         <FileVersion>$(HCDNDesktopVersion)</FileVersion>
         <AssemblyVersion>$(HCDNDesktopVersion)</AssemblyVersion>
-    </PropertyGroup>
-
-    <PropertyGroup>
-        <AssemblyTitle>HCDN.Desktop - HoloCure.NET.Desktop</AssemblyTitle>
-        <Description>Desktop implementation of HoloCure.NET.</Description>
-        <Authors>Tomat</Authors>
-        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
@@ -43,13 +35,6 @@
         <Content Include="@(fnalibs)">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-
-        <!--<libs Include="bin\$(Configuration)\$(TargetFramework)\*"/>
-        <libs Remove="bin\$(Configuration)\$(TargetFramework)\HCDN.Desktop.dll"/>
-        <libs Remove="bin\$(Configuration)\$(TargetFramework)\HCDN.Desktop.runtimeconfig.json"/>
-        <runtimes Include="bin\$(Configuration)\$(TargetFramework)\runtimes\**"/>
-        <None Include="@(libs)" PackagePath="lib\$(TargetFramework)\%(RecursiveDir)%(Filename)%(Extension)" Pack="true" Visible="false"/>
-        <None Include="@(runtimes)" PackagePath="lib\$(TargetFramework)\runtimes\%(RecursiveDir)%(Filename)%(Extension)" Pack="true" Visible="false"/>-->
     </ItemGroup>
 
 </Project>
