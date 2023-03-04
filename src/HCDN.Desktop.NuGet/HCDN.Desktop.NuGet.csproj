@@ -3,7 +3,7 @@
     <Import Project="../versions.targets"/>
 
     <PropertyGroup>
-        <RootNamespace>HCDN.Desktop</RootNamespace>
+        <RootNamespace>HCDN.Desktop.NuGet</RootNamespace>
         <AssemblyName>HCDN.Desktop.NuGet</AssemblyName>
         <PackageId>HCDN.Desktop</PackageId>
 
