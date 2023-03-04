@@ -20,7 +20,15 @@
 
     <PropertyGroup>
         <AssemblyTitle>HCDN.Desktop - HoloCure.NET.Desktop</AssemblyTitle>
-        <Description>Desktop implementation of HoloCure.NET.</Description>
+        <Description>
+            Desktop implementation of HoloCure.NET.
+            
+            This is a NuGet-specific release that facilitates auto-updating
+            through normal distributions.
+            Projects that depend on HCDN's other libraries should not use this,
+            and no project should depend specifically on the desktop
+            implementation anyway.
+        </Description>
         <Authors>Tomat</Authors>
         <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
