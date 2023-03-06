@@ -11,7 +11,7 @@
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
 
-        <InformationalVersion>$(PackageId)|$(HCDNDesktopVersion)</InformationalVersion>
+        <InformationalVersion>$(AssemblyName)|$(HCDNDesktopVersion)</InformationalVersion>
     </PropertyGroup>
 
     <PropertyGroup>
