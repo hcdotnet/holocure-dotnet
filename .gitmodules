@@ -1,6 +1,3 @@
-[submodule "src/FNA"]
-	path = src/FNA
-	url = https://github.com/FNA-XNA/FNA
 [submodule "src/HCDN.FNA"]
 	path = src/HCDN.FNA
 	url = https://github.com/hcdotnet/holocure-fna.git
