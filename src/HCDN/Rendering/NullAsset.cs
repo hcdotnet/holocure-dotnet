@@ -11,13 +11,13 @@ namespace HCDN.Rendering;
 public sealed class NullAsset<T> : IAsset<T> where T : class {
     public static readonly NullAsset<T> INSTANCE = new();
 
-    public Identifier Identity => Identifier.NULL;
+    Identifier IAsset.Identity => Identifier.NULL;
 
-    public T? Value { get; set; } = null;
+    T? IAsset<T>.Value => null;
 
     bool IAsset.Invalidated => false;
 
-    public IAssetManager? Manager { get; set; }
+    IAssetManager? IAsset.Manager { get; set; }
 
     void IAsset.Invalidate() {
     }
