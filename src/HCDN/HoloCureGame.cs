@@ -1,4 +1,5 @@
 ﻿using HCDN.API;
+using HCDN.Rendering;
 using Microsoft.Xna.Framework;
 
 namespace HCDN;
@@ -15,6 +16,11 @@ public abstract class HoloCureGame : Game,
     public IModLoader ModLoader { get; }
 
     /// <summary>
+    ///     The <see cref="IAssetManager"/> instance for this game.
+    /// </summary>
+    private IAssetManager AssetManager { get; }
+
+    /// <summary>
     ///     Initializes a new instance of <see cref="HoloCureGame"/> with all
     ///     required external dependencies.
     /// </summary>
@@ -23,5 +29,6 @@ public abstract class HoloCureGame : Game,
     /// </param>
     protected HoloCureGame(IModLoader modLoader) {
         ModLoader = modLoader;
+        AssetManager = new AssetManager();
     }
 }
