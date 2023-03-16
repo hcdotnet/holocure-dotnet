@@ -34,7 +34,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\FIARA\FIARA.csproj" />
-        <ProjectReference Include="..\HCDN.FNA\FNA.Core.csproj" />
     </ItemGroup>
 
 </Project>
