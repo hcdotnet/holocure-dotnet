@@ -8,10 +8,7 @@ public class Asset<T> : IAsset<T> where T : class {
 
     private T? value;
     
-    public T? Value {
-        get => GetValue();
-        set => this.value = value;
-    }
+    public T? Value => GetValue();
 
     public bool Invalidated { get; protected set; }
 
@@ -24,7 +21,7 @@ public class Asset<T> : IAsset<T> where T : class {
     
     public Asset(Identifier identity, T? value) {
         Identity = identity;
-        Value = value;
+        this.value = value;
     }
 
     private T? GetValue() {
