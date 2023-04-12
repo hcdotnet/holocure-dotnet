@@ -1,4 +1,6 @@
 ﻿using HCDN.API;
+using HCDN.API.Updating;
+using HCDN.Rendering;
 
 namespace HCDN.Desktop;
 
@@ -6,6 +8,13 @@ namespace HCDN.Desktop;
 ///     The desktop implementation of <see cref="HoloCureGame"/>.
 /// </summary>
 /// <seealso cref="HoloCureGame"/>
-public sealed class DesktopGame : HoloCureGame {
-    public DesktopGame(IModLoader modLoader) : base(modLoader) { }
+public sealed partial class DesktopGame : HoloCureGame {
+    public DesktopGame(
+        IModLoader modLoader,
+        IAssetManager assetManager,
+        IUpdater gameUpdater) : base(
+        modLoader,
+        assetManager,
+        gameUpdater
+    ) { }
 }

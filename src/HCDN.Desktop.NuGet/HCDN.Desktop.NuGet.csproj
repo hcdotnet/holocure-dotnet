@@ -5,7 +5,7 @@
     <PropertyGroup>
         <RootNamespace>HCDN.Desktop.NuGet</RootNamespace>
         <AssemblyName>HCDN.Desktop.NuGet</AssemblyName>
-        <PackageId>HCDN.Desktop</PackageId>
+        <PackageId>HCDN.Desktop.NuGet</PackageId>
 
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>latest</LangVersion>

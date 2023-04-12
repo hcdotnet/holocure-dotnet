@@ -1,7 +1,6 @@
-﻿root = true
 
 [*]
-charset = utf-8
+charset = utf-8-bom
 end_of_line = crlf
 trim_trailing_whitespace = false
 insert_final_newline = false
@@ -107,6 +106,7 @@ resharper_align_multiple_declaration = true
 resharper_align_multline_type_parameter_constrains = true
 resharper_align_multline_type_parameter_list = true
 resharper_align_tuple_components = true
+resharper_apply_auto_detected_rules = false
 resharper_autodetect_indent_settings = true
 resharper_blank_lines_after_control_transfer_statements = 1
 resharper_blank_lines_around_accessor = 1
@@ -147,7 +147,7 @@ resharper_keep_existing_expr_member_arrangement = false
 resharper_keep_existing_initializer_arrangement = false
 resharper_keep_existing_property_patterns_arrangement = false
 resharper_keep_existing_switch_expression_arrangement = false
-resharper_max_array_initializer_elements_on_line = 0
+resharper_max_array_initializer_elements_on_line = 10
 resharper_max_attribute_length_for_same_line = 0
 resharper_max_enum_members_on_line = 1
 resharper_max_formal_parameters_on_line = 100
@@ -168,12 +168,11 @@ resharper_place_simple_anonymousmethod_on_single_line = false
 resharper_place_simple_embedded_statement_on_same_line = false
 resharper_trailing_comma_in_multiline_lists = true
 resharper_use_indent_from_vs = false
-resharper_wrap_array_initializer_style = chop_always
+resharper_wrap_array_initializer_style = chop_if_long
 resharper_wrap_chained_binary_expressions = chop_if_long
 resharper_wrap_chained_binary_patterns = chop_if_long
 resharper_wrap_chained_method_calls = chop_if_long
 resharper_wrap_object_and_collection_initializer_style = chop_always
-resharper_wrap_property_pattern = chop_always
 
 # ReSharper inspection severities
 resharper_arrange_redundant_parentheses_highlighting = hint
