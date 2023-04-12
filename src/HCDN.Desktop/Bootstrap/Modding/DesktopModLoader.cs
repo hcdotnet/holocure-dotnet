@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using HCDN.API;
+using HCDN.API.Modding;
 
 namespace HCDN.Desktop.Bootstrap.Modding; 
 

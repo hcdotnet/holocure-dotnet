@@ -1,4 +1,5 @@
 ﻿using HCDN.API;
+using HCDN.API.Modding;
 
 namespace HCDN.HoloCure;
 
