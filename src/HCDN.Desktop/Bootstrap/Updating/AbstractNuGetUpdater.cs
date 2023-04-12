@@ -11,7 +11,7 @@ namespace HCDN.Desktop.Bootstrap.Updating;
 /// <summary>
 ///     An abstract <see cref="IUpdater"/> implementation which uses NuGet.
 /// </summary>
-public abstract class AbstractNuGetUpdater : IUpdater {
+internal abstract class AbstractNuGetUpdater : IUpdater {
     /// <summary>
     ///     The ID of the package to update.
     /// </summary>
@@ -81,15 +81,15 @@ public abstract class AbstractNuGetUpdater : IUpdater {
 
         if (PkgInfo is null)
             throw new InvalidOperationException("Package information is null (this should never happen).");
-        
+
         var progress = new UpdateProgress("Downloading update...", "Downloading NuGet package...", 0, 3);
         reporter.Report(progress);
-        
+
         if (hasDownloadedUpdate) {
             reporter.Report(progress.WithMessage("Update downloaded (already downloaded)!").WithProgress(2, 3));
             return;
         }
-        
+
         hasDownloadedUpdate = true;
 
         PkgDownload = await NuGetUtil.DownloadPackageAsync(PkgInfo, logger);
@@ -99,7 +99,7 @@ public abstract class AbstractNuGetUpdater : IUpdater {
             reporter.Report(progress.WithMessage("Cannot extract NuGet package, failed to download!").WithProgress(3, 3));
             return;
         }
-        
+
         reporter.Report(progress.WithMessage("Extracting NuGet package...").WithProgress(2, 3));
 
         await NuGetUtil.ExtractPackageAsync(PkgDownload, logger);
@@ -115,12 +115,12 @@ public abstract class AbstractNuGetUpdater : IUpdater {
 
         if (!hasDownloadedUpdate)
             throw new InvalidOperationException("Must download update before installing it.");
-        
+
         if (PkgDownload is null)
             throw new InvalidOperationException("Package download is null (this should never happen).");
 
         await InnerInstallUpdateAsync(reporter);
     }
-    
+
     protected abstract Task InnerInstallUpdateAsync(IUpdateReporter reporter);
 }

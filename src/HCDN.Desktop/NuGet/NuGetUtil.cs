@@ -14,7 +14,7 @@ namespace HCDN.Desktop.NuGet;
 /// <summary>
 ///     A collection of utility methods for working with NuGet.
 /// </summary>
-public static class NuGetUtil {
+internal static class NuGetUtil {
     public const string STAGING_DIR = "staging";
 
     /// <summary>

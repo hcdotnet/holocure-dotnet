@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HCDN.API.Updating;
 
-namespace HCDN.Desktop.Bootstrap.Updating; 
+namespace HCDN.Desktop.Bootstrap.Updating;
 
 internal sealed class DummyGameUpdater : IUpdater {
     public Task<bool> HasUpdateAsync(IUpdateReporter reporter) {

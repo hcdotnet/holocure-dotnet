@@ -8,7 +8,7 @@ namespace HCDN.Desktop;
 ///     The desktop implementation of <see cref="HoloCureGame"/>.
 /// </summary>
 /// <seealso cref="HoloCureGame"/>
-public sealed partial class DesktopGame : HoloCureGame {
+internal sealed partial class DesktopGame : HoloCureGame {
     public DesktopGame(
         IModLoader modLoader,
         IAssetManager assetManager,

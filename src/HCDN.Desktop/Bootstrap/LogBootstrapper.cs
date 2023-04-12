@@ -19,7 +19,7 @@ internal static class LogBootstrapper {
     public static void Bootstrap() {
         ConfigureLogging();
     }
-    
+
     private static void ConfigureLogging() {
         var layout = new PatternLayout {
             ConversionPattern = logger_pattern,

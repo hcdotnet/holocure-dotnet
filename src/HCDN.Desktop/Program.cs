@@ -10,7 +10,7 @@ namespace HCDN.Desktop;
 
 internal static class Program {
     [STAThread]
-    internal static void Main(string[] args) {
+    public static void Main(string[] args) {
         // Step 0: Run the post-download update process first.
         if (Updater.RunFromStaging(args.ToList()))
             return;

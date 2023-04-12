@@ -11,11 +11,8 @@ using static SDL2.SDL;
 
 namespace HCDN.Desktop.Bootstrap.Updating;
 
-internal readonly record struct InfoAsmData(
-    string PackageId,
-    string PackageVersion
-) {
-    public static InfoAsmData FromAssembly() {
+internal readonly record struct AssemblyInformationData(string PackageId, string PackageVersion) {
+    public static AssemblyInformationData FromAssembly() {
         var assembly = typeof(Updater).Assembly;
         var info = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
         if (info is null)
@@ -28,7 +25,7 @@ internal readonly record struct InfoAsmData(
         var packageId = infoParts[0];
         var packageVersion = infoParts[1];
 
-        return new InfoAsmData(packageId, packageVersion);
+        return new AssemblyInformationData(packageId, packageVersion);
     }
 }
 
@@ -42,7 +39,7 @@ internal static class Updater {
 
         if (args.Count <= index + 1)
             throw new Exception("Expected path to install directory after --staging.");
-        
+
         // Sleep for a second to give the original process time to close.
         Thread.Sleep(1000);
 
@@ -80,7 +77,7 @@ internal static class Updater {
         var logger = LogManager.GetLogger(typeof(Updater));
 
         try {
-            var info = InfoAsmData.FromAssembly();
+            var info = AssemblyInformationData.FromAssembly();
             logger.Debug("Package ID: " + info.PackageId);
             logger.Debug("Package version: " + info.PackageVersion);
             return new DesktopGameUpdater(info.PackageId, NuGetVersion.Parse(info.PackageVersion));

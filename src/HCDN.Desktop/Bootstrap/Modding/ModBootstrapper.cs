@@ -1,7 +1,5 @@
-﻿namespace HCDN.Desktop.Bootstrap.Modding; 
+﻿namespace HCDN.Desktop.Bootstrap.Modding;
 
 internal static class ModBootstrapper {
-    public static void Bootstrap() {
-        
-    }
+    public static void Bootstrap() { }
 }

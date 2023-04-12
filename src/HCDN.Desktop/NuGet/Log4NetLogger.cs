@@ -87,7 +87,7 @@ internal sealed class Log4NetLogger : ILogger {
         AsLogger().Log(message);
         return Task.CompletedTask;
     }
-    
+
     private ILogger AsLogger() {
         return this;
     }
