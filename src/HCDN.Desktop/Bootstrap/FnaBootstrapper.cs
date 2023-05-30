@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using log4net;
+using HCDN.Logging;
 
 namespace HCDN.Desktop.Bootstrap;
 
@@ -20,7 +20,7 @@ internal static class FnaBootstrapper {
     private const int load_library_search_default_dirs = 0x00001000;
 
     public static void Bootstrap() {
-        var logger = LogManager.GetLogger(typeof(FnaBootstrapper));
+        var logger = LogInitializer.FromType(typeof(FnaBootstrapper));
         var platform = Environment.OSVersion.Platform;
         var is64Bit = Environment.Is64BitProcess;
         var fnalibsDir = Path.Combine(

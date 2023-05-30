@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
-using log4net;
+using HCDN.Logging;
 using NuGet.Common;
+using LogLevel = NuGet.Common.LogLevel;
 
 namespace HCDN.Desktop.NuGet;
 
 /// <summary>
-///     A NuGet <see cref="ILogger"/> implementation which uses log4net.
+///     A NuGet <see cref="ILogger"/> implementation which uses our
+///     <see cref="Logging.Logger"/>.
 /// </summary>
-internal sealed class Log4NetLogger : ILogger {
-    private readonly ILog logger;
+internal sealed class NuGetLogger : ILogger {
+    private readonly Logger logger;
 
-    public Log4NetLogger(ILog logger) {
+    public NuGetLogger(Logger logger) {
         this.logger = logger;
     }
 

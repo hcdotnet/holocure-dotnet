@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using HCDN.API.Updating;
 using HCDN.Desktop.NuGet;
 using HCDN.Extensions;
-using log4net;
+using HCDN.Logging;
 using NuGet.Versioning;
 
 namespace HCDN.Desktop.Bootstrap.Updating;
@@ -22,7 +22,7 @@ internal abstract class AbstractNuGetUpdater : IUpdater {
     /// </summary>
     public NuGetVersion CurrentVersion { get; }
 
-    private readonly ILog logger;
+    private readonly Logger logger;
 
     private bool hasUpdate;
     private bool hasCheckedForUpdate;
@@ -36,7 +36,7 @@ internal abstract class AbstractNuGetUpdater : IUpdater {
         PackageId = packageId;
         CurrentVersion = currentVersion;
 
-        logger = LogManager.GetLogger(GetType());
+        logger = LogInitializer.FromType(GetType());
     }
 
     public async Task<bool> HasUpdateAsync(IUpdateReporter reporter) {

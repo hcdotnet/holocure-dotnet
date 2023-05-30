@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using log4net;
+using HCDN.Logging;
 using NuGet.Common;
 using NuGet.Configuration;
 using NuGet.Packaging;
@@ -26,7 +26,7 @@ internal static class NuGetUtil {
     ///     The latest version of the specified package, or
     ///     <see langword="null"/> if no package was found.
     /// </returns>
-    public static async Task<PackageInfo?> GetLatestPackageAsync(string packageId, ILog logger) {
+    public static async Task<PackageInfo?> GetLatestPackageAsync(string packageId, Logger logger) {
         logger.Debug("Fetching the latest package information for package: " + packageId);
 
         var settings = Settings.LoadDefaultSettings(null);
@@ -88,7 +88,7 @@ internal static class NuGetUtil {
     ///     The path to the downloaded package, or <see langword="null"/> if the
     ///     package could not be downloaded.
     /// </returns>
-    public static async Task<PackageDownload?> DownloadPackageAsync(PackageInfo packageInfo, ILog logger) {
+    public static async Task<PackageDownload?> DownloadPackageAsync(PackageInfo packageInfo, Logger logger) {
         var dir = Path.Combine(STAGING_DIR, packageInfo.Metadata.Identity.Id.ToLower());
 
         if (Directory.Exists(dir)) {
@@ -125,7 +125,7 @@ internal static class NuGetUtil {
     /// </summary>
     /// <param name="packageDownload">The package download to extract.</param>
     /// <param name="logger">The logger to log with.</param>
-    public static async Task ExtractPackageAsync(PackageDownload packageDownload, ILog logger) {
+    public static async Task ExtractPackageAsync(PackageDownload packageDownload, Logger logger) {
         await PackageExtractor.ExtractPackageAsync(
             packageDownload.DownloadResult.PackageSource,
             packageDownload.DownloadResult.PackageStream,
@@ -145,14 +145,14 @@ internal static class NuGetUtil {
 
     /// <summary>
     ///     Creates a new <see cref="ILogger"/> which uses the specified
-    ///     <see cref="ILog"/> instance.
+    ///     <see cref="Logger"/> instance.
     /// </summary>
-    /// <param name="logger">The <see cref="ILog"/> instance to use.</param>
+    /// <param name="logger">The <see cref="Logger"/> instance to use.</param>
     /// <returns>
     ///     A new <see cref="ILogger"/> which uses the specified
-    ///     <see cref="ILog"/> instance.
+    ///     <see cref="Logger"/> instance.
     /// </returns>
-    public static ILogger GetLogger(ILog logger) {
-        return new Log4NetLogger(logger);
+    public static ILogger GetLogger(Logger logger) {
+        return new NuGetLogger(logger);
     }
 }

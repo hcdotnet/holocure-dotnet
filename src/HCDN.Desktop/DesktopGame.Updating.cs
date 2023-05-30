@@ -1,14 +1,15 @@
 ﻿using HCDN.API.Updating;
-using log4net;
+using HCDN.Desktop.Bootstrap;
+using HCDN.Logging;
 
 namespace HCDN.Desktop;
 
 partial class DesktopGame {
     private sealed class LoggerUpdateReporter : IUpdateReporter {
-        private readonly ILog logger;
+        private readonly Logger logger;
 
         public LoggerUpdateReporter() {
-            logger = LogManager.GetLogger(typeof(DesktopGame));
+            logger = LogInitializer.FromType(typeof(LoggerUpdateReporter));
         }
 
         public void Report(UpdateProgress progress) {

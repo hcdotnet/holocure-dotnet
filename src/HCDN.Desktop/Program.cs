@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HCDN.Desktop.Bootstrap;
 using HCDN.Desktop.Bootstrap.Modding;
 using HCDN.Desktop.Bootstrap.Updating;
+using HCDN.Logging;
 using HCDN.Rendering;
-using log4net;
 
 namespace HCDN.Desktop;
 
@@ -17,8 +18,8 @@ internal static class Program {
 
         // Step 1: Initialize logging, this is done before anything else. Also
         // get some basic logging done before anything else just because.
-        LogBootstrapper.Bootstrap();
-        var logger = LogManager.GetLogger(typeof(Program));
+        LogInitializer.Initialize("HoloCure.NET Desktop");
+        var logger = LogInitializer.FromType(typeof(Program));
         LogStartupInfo(logger, args);
 
         // Step 2: Bootstrap mod loading. Core-mod support depends on this step,
@@ -41,7 +42,7 @@ internal static class Program {
         RunGame(logger);
     }
 
-    private static void RunGame(ILog logger) {
+    private static void RunGame(Logger logger) {
         logger.Info("Starting game!");
         logger.Debug($"Initializing {nameof(DesktopGame)} instance...");
         using var game = new DesktopGame(
@@ -54,8 +55,8 @@ internal static class Program {
         game.Run();
     }
 
-    private static void LogStartupInfo(ILog logger, string[] args) {
-        if (args.Length > 0) {
+    private static void LogStartupInfo(Logger logger, IReadOnlyCollection<string> args) {
+        if (args.Count > 0) {
             logger.Debug("Started process with launch arguments:");
             foreach (var arg in args)
                 logger.Debug($"  {arg}");

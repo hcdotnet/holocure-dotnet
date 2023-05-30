@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using HCDN.API.Updating;
-using log4net;
+using HCDN.Logging;
 using NuGet.Versioning;
 using static SDL2.SDL;
 
@@ -74,7 +74,7 @@ internal static class Updater {
     }
 
     internal static IUpdater MakeGameUpdater() {
-        var logger = LogManager.GetLogger(typeof(Updater));
+        var logger = LogInitializer.FromType(typeof(Updater));
 
         try {
             var info = AssemblyInformationData.FromAssembly();
@@ -83,7 +83,8 @@ internal static class Updater {
             return new DesktopGameUpdater(info.PackageId, NuGetVersion.Parse(info.PackageVersion));
         }
         catch (Exception e) {
-            logger.Error("Failed to get assembly information.", e);
+            logger.Error("Failed to get assembly information.");
+            logger.Error(e.ToString());
             if (DisplayPanicMessageBox(e))
                 Environment.Exit(1);
             return new DummyGameUpdater();
