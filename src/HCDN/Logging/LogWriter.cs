@@ -104,7 +104,7 @@ public sealed class FileLogWriter : StringLogWriter {
     }
 
     protected override void Write(string message, ConsoleColor color) {
-        writer.Write(message);
+        writer.WriteLine(message);
     }
 
     protected override void Dispose(bool disposing) {
