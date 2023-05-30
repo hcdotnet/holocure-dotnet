@@ -106,8 +106,9 @@ public static class LoggerExtensions {
 
         var nameParts = name[(assemblyName.Length + 1)..].Split('.');
 
-        // Shorten each namespace part to just four letters at most.
-        for (var i = 0; i < nameParts.Length; i++) {
+        // Shorten each namespace part to just four letters at most, but leave
+        // the type name unchanged.
+        for (var i = 0; i < nameParts.Length - 1; i++) {
             if (nameParts[i].Length > 4)
                 nameParts[i] = nameParts[i][..4];
         }
