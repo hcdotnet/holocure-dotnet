@@ -51,6 +51,9 @@ partial class HoloCureGame {
     }
 
     private void PromptUserWithUpdate() {
+        const int update_button = 1;
+        const int ignore_button = 0;
+        
         // Show SDL message box showing an update is available and two options:
         //  'Update' - Download and unpack the update, then close the game.
         //  'Ignore' - Continue without doing anything.
@@ -62,11 +65,11 @@ partial class HoloCureGame {
             numbuttons = 2,
             buttons = new SDL.SDL_MessageBoxButtonData[] {
                 new() {
-                    buttonid = 0,
+                    buttonid = update_button,
                     text = "Update",
                 },
                 new() {
-                    buttonid = 1,
+                    buttonid = ignore_button,
                     text = "Ignore",
                 },
             },
@@ -75,11 +78,11 @@ partial class HoloCureGame {
         SDL.SDL_ShowMessageBox(ref messageBoxData, out var buttonId);
         
         switch (buttonId) {
-            case 1:
+            case ignore_button:
                 // Ignore.
                 break;
 
-            case 0:
+            case update_button:
                 // Update.
                 state = DownloadState.Requested;
                 break;
