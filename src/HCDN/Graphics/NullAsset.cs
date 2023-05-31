@@ -1,7 +1,7 @@
 ﻿using System;
 using HCDN.API;
 
-namespace HCDN.Rendering; 
+namespace HCDN.Graphics; 
 
 /// <summary>
 ///     The fallback value for an asset that is not found by an

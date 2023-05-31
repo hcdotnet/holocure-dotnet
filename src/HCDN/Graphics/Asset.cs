@@ -1,7 +1,7 @@
 ﻿using System;
 using HCDN.API;
 
-namespace HCDN.Rendering;
+namespace HCDN.Graphics;
 
 public class Asset<T> : IAsset<T> where T : class {
     public Identifier Identity { get; }
@@ -28,7 +28,8 @@ public class Asset<T> : IAsset<T> where T : class {
         if (!Invalidated)
             return value;
 
-        // TODO: Throw here or something?
+        // TODO: Throw here or something? What about NullAsset? Should this ever
+        // even possibly happen?
         if (Manager is null)
             return value;
 

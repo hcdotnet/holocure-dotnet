@@ -1,6 +1,7 @@
 ﻿using HCDN.API;
+using HCDN.API.Modding;
 using HCDN.API.Updating;
-using HCDN.Rendering;
+using HCDN.Graphics;
 
 namespace HCDN.Desktop;
 

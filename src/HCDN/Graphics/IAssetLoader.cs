@@ -1,6 +1,6 @@
 ﻿using HCDN.API;
 
-namespace HCDN.Rendering;
+namespace HCDN.Graphics;
 
 /// <summary>
 ///     Handles the loading of an asset per the request of an

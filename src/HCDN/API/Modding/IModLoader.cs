@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using HCDN.API.Modding;
 
-namespace HCDN.API; 
+namespace HCDN.API.Modding; 
 
 /// <summary>
 ///     Handles the loading of mods at runtime.
@@ -10,5 +9,5 @@ public interface IModLoader {
     /// <summary>
     ///     Mods, by name.
     /// </summary>
-    IDictionary<string, IMod> Mods { get; }
+    IDictionary<string, IModInitializer> Mods { get; }
 }

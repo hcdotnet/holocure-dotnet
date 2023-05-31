@@ -27,24 +27,16 @@ public readonly record struct UpdateProgress(string? Title, string? Message, int
     ///     and <see cref="Message"/>.
     ///     <br />
     ///     When neither are null, the format will be:
-    ///     <c>
-    ///         [Title]: [Message] - [Progress]/[Total]
-    ///     </c>
+    ///     <c>[Title]: [Message] - [Progress]/[Total]</c>
     ///     <br />
     ///     When only <see cref="Title"/> is null, the format will be:
-    ///     <c>
-    ///         [Message] - [Progress]/[Total]
-    ///     </c>
+    ///     <c>[Message] - [Progress]/[Total]</c>
     ///     <br />
     ///     When only <see cref="Message"/> is null, the format will be:
-    ///     <c>
-    ///         [Title] - [Progress]/[Total]
-    ///     </c>
+    ///     <c>[Title] - [Progress]/[Total]</c>
     ///     <br />
     ///     When both are null, the format will be:
-    ///     <c>
-    ///         [Progress]/[Total]
-    ///     </c>
+    ///     <c>[Progress]/[Total]</c>
     /// </returns>
     public override string ToString() {
         // Refer to summary to quickly understand how this string is formatted.

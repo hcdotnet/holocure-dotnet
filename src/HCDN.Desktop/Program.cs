@@ -4,8 +4,8 @@ using System.Linq;
 using HCDN.Desktop.Bootstrap;
 using HCDN.Desktop.Bootstrap.Modding;
 using HCDN.Desktop.Bootstrap.Updating;
+using HCDN.Graphics;
 using HCDN.Logging;
-using HCDN.Rendering;
 
 namespace HCDN.Desktop;
 

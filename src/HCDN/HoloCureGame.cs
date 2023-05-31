@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 using HCDN.API;
+using HCDN.API.Modding;
 using HCDN.API.Updating;
-using HCDN.Rendering;
+using HCDN.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace HCDN;

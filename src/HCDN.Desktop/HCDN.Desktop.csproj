@@ -21,7 +21,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\HCDN.CoreAPI\HCDN.CoreAPI.csproj" PrivateAssets="all" />
         <ProjectReference Include="..\HCDN\HCDN.csproj" PrivateAssets="all" />
     </ItemGroup>
 

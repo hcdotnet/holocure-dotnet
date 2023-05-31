@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using HCDN.API;
 
-namespace HCDN.Rendering;
+namespace HCDN.Graphics;
 
 /// <summary>
 ///     Represents an asset manager, which handles the loading and unloading of

@@ -1,7 +1,7 @@
 ﻿using System;
 using HCDN.API;
 
-namespace HCDN.Rendering;
+namespace HCDN.Graphics;
 
 /// <summary>
 ///     Represents an asset handled by an <see cref="IAssetLoader"/> and an
@@ -36,7 +36,7 @@ public interface IAsset : IDisposable {
 }
 
 /// <summary>
-///     Represents an asset handled by an <see cref="IAssetRepository"/> and and
+///     Represents an asset handled by an <see cref="IAssetLoader"/> and an
 ///     <see cref="IAssetManager"/>.
 /// </summary>
 /// <typeparam name="T">The asset's type.</typeparam>

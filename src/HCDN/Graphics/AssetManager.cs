@@ -4,7 +4,7 @@ using System.Linq;
 using HCDN.API;
 using HCDN.Extensions;
 
-namespace HCDN.Rendering;
+namespace HCDN.Graphics;
 
 /// <summary>
 ///     The default implementation of <see cref="IAssetManager"/>.
@@ -54,9 +54,11 @@ public class AssetManager : IAssetManager {
             asset = new Asset<T>(identity, assetVal) {
                 Manager = this,
             };
+            Assets[identity] = new WeakReference<IAsset>(asset);
             return true;
         }
 
+        // Remember not to add to Assets here, this is a null fallback.
         asset = NullAsset<T>.INSTANCE;
         return false;
     }
@@ -66,6 +68,10 @@ public class AssetManager : IAssetManager {
         return asset;
     }
 
+    // Note that this does not take advantage of the Assets cache, since it
+    // doesn't return an IAsset<T>. That's instead handled in TryGetAsset;
+    // should we make note of this in a summary -- it should hold true for all
+    // implementations (generally, but not all implementations may use a cache).
     public virtual T? GetAssetValue<T>(Identifier identity) where T : class {
         foreach (var loader in Loaders.Values.Reverse()) {
             var lAsset = loader.LoadAsset<T>(identity);

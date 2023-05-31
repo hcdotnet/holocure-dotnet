@@ -1,5 +1,5 @@
 ﻿using HCDN.API;
-using HCDN.Rendering;
+using HCDN.Graphics;
 
 namespace HCDN.Extensions;
 
