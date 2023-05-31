@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "targets", "targets", "{373D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIARA", "FIARA\FIARA.csproj", "{A845B9DB-A961-4EEC-8DAB-5799E18CB13F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCDN.Desktop.NuGet", "HCDN.Desktop.NuGet\HCDN.Desktop.NuGet.csproj", "{C737ECD5-5A82-4772-AFA1-10184C381873}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{A845B9DB-A961-4EEC-8DAB-5799E18CB13F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A845B9DB-A961-4EEC-8DAB-5799E18CB13F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A845B9DB-A961-4EEC-8DAB-5799E18CB13F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C737ECD5-5A82-4772-AFA1-10184C381873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C737ECD5-5A82-4772-AFA1-10184C381873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C737ECD5-5A82-4772-AFA1-10184C381873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C737ECD5-5A82-4772-AFA1-10184C381873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

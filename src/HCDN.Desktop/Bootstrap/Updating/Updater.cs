@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using HCDN.API.Updating;
-using HCDN.Logging;
 using NuGet.Versioning;
 using static SDL2.SDL;
 
