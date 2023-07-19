@@ -1,71 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using HCDN.Desktop.Bootstrap;
-using HCDN.Desktop.Bootstrap.Modding;
-using HCDN.Desktop.Bootstrap.Updating;
-using HCDN.Graphics;
-using HCDN.Logging;
+using HCDN.Desktop.Launch;
 
 namespace HCDN.Desktop;
 
 internal static class Program {
     [STAThread]
-    public static void Main(string[] args) {
-        // Step 0: Run the post-download update process first.
-        if (Updater.RunFromStaging(args.ToList()))
-            return;
-
-        // Step 1: Initialize logging, this is done before anything else. Also
-        // get some basic logging done before anything else just because.
-        LogInitializer.Initialize("HoloCure.NET Desktop");
-        var logger = LogInitializer.FromType(typeof(Program));
-        LogStartupInfo(logger, args);
-
-        // Step 2: Bootstrap mod loading. Core-mod support depends on this step,
-        // as well as regular runtime mod loading, so this comes first. This
-        // step handles some important things such as discovering, unpacking,
-        // and deleting .nupkg files (present in first-launch releases and from
-        // downloading packages in-game).
-        ModBootstrapper.Bootstrap();
-
-        // Step 3: Load core-mods. This is the first thing we do after logging.
-        // It is by far the most important and complex step in the loading
-        // process.
-        CoreModLoader.LoadCoreMods();
-
-        // Step 4: Bootstrap FNA. This is the first important thing we do after
-        // loading core-mods.
-        FnaBootstrapper.Bootstrap();
-
-        // Step 5: After loading core-mods and bootstrapping FNA, load the game.
-        RunGame(logger);
+    public static int Main(string[] args) {
+        var launchType = DetermineLaunchType(args);
+        return GameLauncher.Launch(launchType, args);
     }
 
-    private static void RunGame(Logger logger) {
-        logger.Info("Starting game!");
-        logger.Debug($"Initializing {nameof(DesktopGame)} instance...");
-        using var game = new DesktopGame(
-            new DesktopModLoader(),
-            new AssetManager(),
-            Updater.MakeGameUpdater()
-        );
+    private static LaunchType DetermineLaunchType(string[] args) {
+        // If "--staging" is passed, the update daemon is running.
+        if (args.Contains("--staging"))
+            return LaunchType.UpdateDaemon;
 
-        logger.Debug($"Running {nameof(DesktopGame)} instance...");
-        game.Run();
-    }
+        // Explicitly don't load coremods if the user has them disabled.
+        if (args.Contains("--core-mods-disabled"))
+            return LaunchType.CoreModsDisabledExplicitly;
 
-    private static void LogStartupInfo(Logger logger, IReadOnlyCollection<string> args) {
-        if (args.Count > 0) {
-            logger.Debug("Started process with launch arguments:");
-            foreach (var arg in args)
-                logger.Debug($"  {arg}");
-        }
-        else {
-            logger.Debug("Started process without launch arguments.");
-        }
+        // This is passed by the main game process when re-launching with
+        // core-mods.
+        if (args.Contains("--core-mods-loaded"))
+            return LaunchType.CoreModsDisabledImplicitly;
 
-        logger.Debug("Running in CWD: " + Environment.CurrentDirectory);
-        logger.Debug("AppDomain directory: " + AppDomain.CurrentDomain.BaseDirectory);
+        // Otherwise just assume we want to launch with core-mods...
+        return LaunchType.CoreModsEnabled;
     }
 }

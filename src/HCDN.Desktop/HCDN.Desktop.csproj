@@ -33,6 +33,7 @@
         <fnalibs Remove="..\..\native\fnalibs\README.txt" />
         <Content Include="@(fnalibs)">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>false</Visible>
         </Content>
     </ItemGroup>
 

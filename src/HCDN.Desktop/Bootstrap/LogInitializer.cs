@@ -7,8 +7,6 @@ using HCDN.Logging;
 namespace HCDN.Desktop.Bootstrap;
 
 internal static class LogInitializer {
-    private const string log_file_name = "desktop.log";
-
     private static Logger logger = null!;
 
     public static Logger Logger {
@@ -16,18 +14,19 @@ internal static class LogInitializer {
         set => logger = value;
     }
 
-    public static void Initialize(string name) {
-        logger = new Logger(name, LogWriter.FromMany(MakeLogWriters().ToArray()));
+    public static void Initialize(string name, string logFileName) {
+        var writers = LogWriter.FromMany(MakeLogWriters(logFileName).ToArray());
+        Logger = new Logger(name, writers);
     }
 
     public static Logger FromType(Type type) {
-        return logger.MakeChildFromType(type);
+        return Logger.MakeChildFromType(type);
     }
 
-    private static IEnumerable<ILogWriter> MakeLogWriters() {
+    private static IEnumerable<ILogWriter> MakeLogWriters(string logFileName) {
         yield return new ConsoleLogWriter();
-        yield return new FileLogWriter(PrepareArchivableLogFile());
-        yield return new FileLogWriter(PrepareTemporaryLogFile());
+        yield return new FileLogWriter(PrepareArchivableLogFile(logFileName));
+        yield return new FileLogWriter(PrepareTemporaryLogFile(logFileName));
     }
 
     private static (string cwd, string logDir) EnsureLogDirectories() {
@@ -39,9 +38,9 @@ internal static class LogInitializer {
         return (cwd, logDir);
     }
 
-    private static string PrepareArchivableLogFile() {
+    private static string PrepareArchivableLogFile(string logFileName) {
         var (_, logDir) = EnsureLogDirectories();
-        var name = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + "_" + log_file_name;
+        var name = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + "_" + logFileName + ".log";
         var logFile = Path.Combine(logDir, name);
 
         if (File.Exists(logFile)) {
@@ -51,9 +50,9 @@ internal static class LogInitializer {
         return logFile;
     }
 
-    private static string PrepareTemporaryLogFile() {
+    private static string PrepareTemporaryLogFile(string logFileName) {
         var (cwd, _) = EnsureLogDirectories();
-        var logFile = Path.Combine(cwd, log_file_name);
+        var logFile = Path.Combine(cwd, logFileName + ".log");
 
         if (File.Exists(logFile)) {
             File.Delete(logFile);

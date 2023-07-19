@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using HCDN.API;
+﻿using HCDN.API;
 using HCDN.API.Modding;
 using HCDN.API.Updating;
 using HCDN.Graphics;
@@ -14,9 +13,9 @@ namespace HCDN;
 public abstract partial class HoloCureGame : Game,
                                              IGame {
     /// <summary>
-    ///     The <see cref="IModLoader"/> instance for this game.
+    ///     The <see cref="IModLoader{TInitializer}"/> instance for this game.
     /// </summary>
-    public IModLoader ModLoader { get; }
+    public IModLoader<IModInitializer> ModLoader { get; }
 
     /// <summary>
     ///     The <see cref="IAssetManager"/> instance for this game.
@@ -33,7 +32,7 @@ public abstract partial class HoloCureGame : Game,
     ///     required external dependencies.
     /// </summary>
     /// <param name="modLoader">
-    ///     The <see cref="IModLoader"/> to use for loading mods.
+    ///     The <see cref="IModLoader{TInitializer}"/> to use for loading mods.
     /// </param>
     /// <param name="assetManager">
     ///     The <see cref="IAssetManager"/> to use for loading assets.
@@ -41,7 +40,7 @@ public abstract partial class HoloCureGame : Game,
     /// <param name="gameUpdater">
     ///     The <see cref="IUpdater"/> to use for updating this game.
     /// </param>
-    protected HoloCureGame(IModLoader modLoader, IAssetManager assetManager, IUpdater gameUpdater) {
+    protected HoloCureGame(IModLoader<IModInitializer> modLoader, IAssetManager assetManager, IUpdater gameUpdater) {
         ModLoader = modLoader;
         AssetManager = assetManager;
         GameUpdater = gameUpdater;

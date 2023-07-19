@@ -10,9 +10,10 @@ namespace HCDN.Desktop;
 /// <seealso cref="HoloCureGame"/>
 internal sealed partial class DesktopGame : HoloCureGame {
     public DesktopGame(
-        IModLoader modLoader,
+        IModLoader<IModInitializer> modLoader,
         IAssetManager assetManager,
-        IUpdater gameUpdater) : base(
+        IUpdater gameUpdater
+    ) : base(
         modLoader,
         assetManager,
         gameUpdater

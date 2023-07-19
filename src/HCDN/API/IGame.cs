@@ -7,7 +7,7 @@ namespace HCDN.API;
 /// </summary>
 public interface IGame {
     /// <summary>
-    ///     The <see cref="IModLoader"/> instance for this game.
+    ///     The <see cref="IModLoader{TInitializer}"/> instance for this game.
     /// </summary>
-    IModLoader ModLoader { get; }
+    IModLoader<IModInitializer> ModLoader { get; }
 }

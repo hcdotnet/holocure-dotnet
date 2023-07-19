@@ -4,7 +4,7 @@ using HCDN.Logging;
 
 namespace HCDN.Desktop;
 
-partial class DesktopGame {
+internal partial class DesktopGame {
     private sealed class LoggerUpdateReporter : IUpdateReporter {
         private readonly Logger logger;
 
